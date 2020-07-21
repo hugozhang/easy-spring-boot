@@ -10,9 +10,17 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+
+/**
+ * @Valid 与 @Validated 的应用场景
+ * https://langinteger.github.io/2019/09/13/java-bean-validation/
+ */
 @ControllerAdvice
 public class GlobalExceptionAdvice {
 
@@ -42,6 +50,29 @@ public class GlobalExceptionAdvice {
         return result;
     }
 
+    /**
+     * controller 转换单一属性检验失败 比如：int,string,list
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler(value = {ConstraintViolationException.class})
+    @ResponseBody
+    public JsonResult validParamterWrap3(ConstraintViolationException ex) {
+        List<ValidFieldError> results = new ArrayList<>();
+        Set<ConstraintViolation<?>> constraintViolations = ex.getConstraintViolations();
+        for ( ConstraintViolation constraintViolation : constraintViolations ) {
+            ValidFieldError validFieldError = new ValidFieldError();
+            validFieldError.setField(constraintViolation.getPropertyPath().toString());
+            validFieldError.setMessage(constraintViolation.getMessage());
+            results.add(validFieldError);
+        }
+        JsonResult result = new JsonResult();
+        result.setCode(400);
+        result.setMessage("参数检验失败");
+        result.setData(results);
+        return result;
+    }
+
     private JsonResult buildValidFieldError(List<FieldError> errors) {
         List<ValidFieldError> results = new ArrayList<>();
         for(FieldError fieldError : errors) {
@@ -52,7 +83,7 @@ public class GlobalExceptionAdvice {
         }
         JsonResult result = new JsonResult();
         result.setCode(400);
-        result.setMessage("参数验证失败");
+        result.setMessage("参数检验失败");
         result.setData(results);
         return result;
     }
