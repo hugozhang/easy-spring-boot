@@ -9,8 +9,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
+
+/**
+ * https://yangbingdong.com/2018/spring-boot-mvc-validation/
+ */
 
 @Api(tags = {"用户模块"})
 @Validated
@@ -18,7 +23,6 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
-    @ResponseBody
     @GetMapping("/")
     public User get() {
         User user = new User();
@@ -26,20 +30,27 @@ public class UserController {
         return user;
     }
 
-    @ResponseBody
+    /**
+     * 加了@NotBlank  请求参数形式是json body?
+     * @param age
+     */
+    @Validated
+    @GetMapping("/error2")
+    public void error2(@NotNull Integer  age) {
+        System.out.println(age);
+    }
+
     @GetMapping("/error")
     public User error() {
         throw new BizServiceException("user.not.found","用户不存在");
     }
 
 
-    @ResponseBody
     @PutMapping("/group/create")
     public void create(@Validated(OnCreate.class) @RequestBody User user) {
 
     }
 
-    @ResponseBody
     @PutMapping("/group/update")
     public void update(@Validated(OnUpdate.class) @RequestBody User user) {
 
@@ -50,7 +61,6 @@ public class UserController {
      * @param user
      * @return
      */
-    @ResponseBody
     @PutMapping("/put")
     public User put(@Valid User user) {
         return user;
@@ -61,7 +71,6 @@ public class UserController {
      * @param user
      * @return
      */
-    @ResponseBody
     @PutMapping("/put2")
     public User put2(@RequestBody @Valid User user) {
         return user;
@@ -72,7 +81,6 @@ public class UserController {
      * @param userList
      * @return
      */
-    @ResponseBody
     @PutMapping("/put3")
     public List<User> put3(@Valid @RequestBody List<User> userList) {
         return userList;

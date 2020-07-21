@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_HOME" value="/export/logs/easy-spring-boot/"/>
+    <property name="LOG_FILE" value="easy-spring-boot"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}||[%magenta(%thread)]||%highlight(%-5level)||%yellow(%logger.%M)|| %msg%n</pattern>
+            <!-- 常用的Pattern变量 -->
+            <!--
+              <pattern>
+                  %d{yyyy-MM-dd HH:mm:ss} [%level] - %msg%n
+                  Logger: %logger
+                  Class: %class
+                  File: %file
+                  Caller: %caller
+                  Line: %line
+                  Message: %m
+                  Method: %M
+                  Relative: %relative
+                  Thread: %thread
+                  Exception: %ex
+                  xException: %xEx
+                  nopException: %nopex
+                  rException: %rEx
+                  Marker: %marker
+                  %n
+              </pattern>
+            -->
+        </encoder>
+    </appender>
+
+<!--    <appender name="allLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${LOG_HOME}/${LOG_FILE}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${LOG_HOME}/${LOG_FILE}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>-->
+<!--            <MaxHistory>30</MaxHistory>-->
+<!--            &lt;!&ndash; 超过maxFileSize大小，进行${date}-i的方式分割 &ndash;&gt;-->
+<!--            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--                <maxFileSize>500MB</maxFileSize>-->
+<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
+<!--        </rollingPolicy>-->
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}||[%thread]||%-5level||%logger||%msg%n</pattern>-->
+<!--        </layout>-->
+<!--    </appender>-->
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
