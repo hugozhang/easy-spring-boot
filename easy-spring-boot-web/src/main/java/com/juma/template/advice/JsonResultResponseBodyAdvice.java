@@ -1,4 +1,4 @@
-package com.juma.template.response;
+package com.juma.template.advice;
 
 import com.juma.template.common.JsonResult;
 import org.springframework.core.MethodParameter;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @ControllerAdvice(basePackages = "com.juma")
-public class JsonResultResponse implements ResponseBodyAdvice<Object> {
+public class JsonResultResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return true;
