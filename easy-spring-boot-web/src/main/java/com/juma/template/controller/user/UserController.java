@@ -5,6 +5,7 @@ import com.juma.template.common.valid.OnUpdate;
 import com.juma.template.exception.BizServiceException;
 import com.juma.template.user.User;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +24,14 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
+    @Value("${spring.zipkin.kafka.topic:zipkin}")
+    private String topic;
+
     @GetMapping("/")
     public User get() {
         User user = new User();
         user.setUsername("hello spring boot");
+        System.out.println(topic);
         return user;
     }
 
