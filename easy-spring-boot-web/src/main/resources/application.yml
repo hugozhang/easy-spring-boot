@@ -2,13 +2,15 @@ spring:
   sleuth:
     web:
       client:
-        enabled: true
+        enabled: false
     sampler:
         probability: 1.0 # 采用比例，默认 0.1 全部采样 1.0
-  zipkin:
-    sender:
-        type: kafka
-    kafka:
-        topic: zipkin
-  kafka:
-    bootstrap-servers: localhost:9092
+#  zipkin:
+#    sender:
+#        type: kafka
+#    kafka:
+#        topic: zipkin
+#  kafka:
+#    bootstrap-servers: localhost:9092
+server:
+  port: 8025

@@ -1,19 +1,35 @@
 package com.juma.template.controller;
 
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"测试模块"})
 @RestController
-@RequestMapping("test")
+//@RequestMapping("test")
 public class TestController {
 
     @ResponseBody
-    @PostMapping("/")
+    @GetMapping("/")
     public void test() {
+
+        System.out.println(123);
+
+    }
+
+
+    @ResponseBody
+    @GetMapping("/login")
+    public void login(String username,String password) {
+
+        System.out.println(123);
+
+    }
+
+    @ResponseBody
+    @GetMapping("/hello")
+    public void hello() {
+
+        System.out.println("hello");
 
     }
 
