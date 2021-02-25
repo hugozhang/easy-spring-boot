@@ -5,12 +5,9 @@ import com.juma.template.sso.JWTAuthenticationFilter;
 import com.juma.template.sso.JWTLoginFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -25,8 +22,6 @@ import javax.annotation.Resource;
  * @Description:
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -37,13 +32,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     //该地址不走 Spring Security 过滤器链
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/vercode");
+        web.ignoring().antMatchers("/login");
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-//         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        // auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
         // 使用自定义身份验证组件
         auth.authenticationProvider(new CustomAuthenticationProvider(userDetailsService,new BCryptPasswordEncoder()));
     }
@@ -54,7 +49,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //开启登录配置
                 .authorizeRequests()
                 //允许以下请求
-                .antMatchers("/hello").permitAll()
+                .antMatchers("/hello","/login").permitAll()
 
                 // 剩余的其它请求需要身份认证
                 .anyRequest().authenticated()

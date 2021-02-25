@@ -22,10 +22,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        // 关于 UserDetailsService 和 User 对象之前的文章已经讲过.
         return new User("hugo", "123qwe", emptyList());
-
-
     }
 }

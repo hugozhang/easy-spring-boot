@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.FilterChain;
@@ -70,11 +69,10 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, authorities);
 
-        //authenticate()接受一个token参数,返回一个完全经过身份验证的对象，包括证书.
+        // authenticate()接受一个token参数,返回一个完全经过身份验证的对象，包括证书.
         // 这里并没有对用户名密码进行验证,而是使用 AuthenticationProvider 提供的 authenticate 方法返回一个完全经过身份验证的对象，包括证书.
-//        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
-
-//UsernamePasswordAuthenticationToken 是 Authentication 的实现类
+        // Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        // UsernamePasswordAuthenticationToken 是 Authentication 的实现类
         return authenticationToken;
     }
 
@@ -91,7 +89,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
                                             FilterChain chain, Authentication authResult) {
-
         String token = Jwts.builder()
                 .setSubject(authResult.getName())
                 //有效期两小时
@@ -101,6 +98,5 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
                 .compact();
 
         response.addHeader("token", "Bearer " + token);
-
     }
 }
