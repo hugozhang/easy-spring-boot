@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/easy-spring-boot-domain" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easy-spring-boot-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easy-spring-boot-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easy-spring-boot-sso-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easy-spring-boot-sso-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easy-spring-boot-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easy-spring-boot-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/easy-spring-boot-web/src/main/resources" charset="UTF-8" />
