@@ -16,8 +16,9 @@ target/
 logs/
 
 # idea
-.idea/
+.idea/*.xml
 *.iml
+*/*.iml
 
 *velocity.log*
 
