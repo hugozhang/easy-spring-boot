@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>easy-spring-boot-web</artifactId>
+    <groupId>com.juma.server</groupId>
+    <artifactId>easy-spring-boot-sso-server</artifactId>
 
     <dependencies>
 
@@ -72,6 +73,7 @@
             <groupId>com.juma.server</groupId>
             <artifactId>easy-spring-boot-domain</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>

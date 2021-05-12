@@ -16,7 +16,7 @@ target/
 logs/
 
 # idea
-.idea/*.xml
+.idea/
 *.iml
 */*.iml
 
