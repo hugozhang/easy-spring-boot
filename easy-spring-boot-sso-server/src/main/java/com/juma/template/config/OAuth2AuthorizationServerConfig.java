@@ -34,14 +34,12 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .secret(new BCryptPasswordEncoder().encode("123456"))
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all")
-                .redirectUris("http://www.baidu.com")
                 .autoApprove(false)
                 .and()
                 .withClient("sheep2")
                 .secret(new BCryptPasswordEncoder().encode("123456"))
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all")
-                .redirectUris("http://www.baidu.com")
                 .autoApprove(false);
     }
 

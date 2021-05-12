@@ -9,8 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -19,15 +17,15 @@ import javax.annotation.Resource;
  * @Description:
  */
 
-@Service("SheepUserDetailsService")
+@Service
 public class SheepUserDetailsService implements UserDetailsService {
-    @Resource
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        if( !"sheep1".equals(s) )
+        if( !"codesheep".equals(s) )
             throw new UsernameNotFoundException("用户" + s + "不存在" );
 
         return new User( s, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_NORMAL,ROLE_MEDIUM"));

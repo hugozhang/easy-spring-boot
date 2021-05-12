@@ -36,7 +36,7 @@ import java.io.IOException;
 public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-    @Resource(name = "SheepUserDetailsService")
+    @Resource
     private UserDetailsService userDetailsService;
 
 
@@ -53,7 +53,7 @@ public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/webjars/**");
     }
 
-    @Bean
+
     public BCryptPasswordEncoder passwordEncoder() {
         // 配置默认的加密方式
         return new BCryptPasswordEncoder();
@@ -82,7 +82,7 @@ public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http
                 .requestMatchers().antMatchers("/oauth/**","/login/**","/logout/**")
                 .and()
                 .authorizeRequests()
