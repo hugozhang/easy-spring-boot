@@ -1,4 +1,4 @@
-package com.juma.template.service;
+package com.juma.template.sso;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 
-@Service
+//@Service
 public class SheepUserDetailsService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;

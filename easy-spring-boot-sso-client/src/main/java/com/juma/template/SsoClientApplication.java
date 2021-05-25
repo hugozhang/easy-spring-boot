@@ -11,9 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description:
  */
 @SpringBootApplication
-public class Client1Application {
+public class SsoClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Client1Application.class, args);
+        SpringApplication.run(SsoClientApplication.class, args);
     }
 }
