@@ -40,6 +40,13 @@
 <!--                <version>2.2.5.RELEASE</version>-->
 <!--            </dependency>-->
 
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
+            </dependency>
+
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
@@ -104,6 +111,12 @@
             <dependency>
                 <groupId>com.juma.server</groupId>
                 <artifactId>easy-spring-boot-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.juma.server</groupId>
+                <artifactId>easy-spring-boot-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -47,3 +47,5 @@ nbdist/
 
 *.log
 tmp/
+/.idea/
+/.idea/

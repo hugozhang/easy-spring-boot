@@ -10,14 +10,20 @@
         <module name="easy-spring-boot-domain" />
         <module name="easy-spring-boot-biz" />
         <module name="easy-spring-boot-service" />
-        <module name="easy-spring-boot-sso-client (1)" />
         <module name="easy-spring-boot-sso-server" />
         <module name="easy-spring-boot-common" />
         <module name="easy-spring-boot-sso-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="easy-spring-boot-biz" target="1.8" />
+      <module name="easy-spring-boot-common" target="1.8" />
+      <module name="easy-spring-boot-domain" target="1.8" />
+      <module name="easy-spring-boot-service" target="1.8" />
+      <module name="easy-spring-boot-sso-client" target="1.8" />
       <module name="easy-spring-boot-sso-client (1)" target="1.8" />
+      <module name="easy-spring-boot-sso-server" target="1.8" />
+      <module name="easy-spring-boot-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
