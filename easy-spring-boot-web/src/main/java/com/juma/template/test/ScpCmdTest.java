@@ -19,7 +19,8 @@ public class ScpCmdTest {
     private static String HELP_STRING = null;
 
     public static void main(String[] args) {
-        initCliArgs(args);
+        // initCliArgs(args);
+        initCliArgs(new String[]{"scp -h 127.0.0.1"});
     }
 
     /**
@@ -60,11 +61,13 @@ public class ScpCmdTest {
     private static String getHelpString() {
         if (HELP_STRING == null) {
             HelpFormatter helpFormatter = new HelpFormatter();
-
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             PrintWriter printWriter = new PrintWriter(byteArrayOutputStream);
-            helpFormatter.printHelp(printWriter, HelpFormatter.DEFAULT_WIDTH, "scp -help", null,
-                    OPTIONS, HelpFormatter.DEFAULT_LEFT_PAD, HelpFormatter.DEFAULT_DESC_PAD, null);
+            helpFormatter.printHelp(printWriter,
+                    HelpFormatter.DEFAULT_WIDTH, "scp -help", null,
+                    OPTIONS,
+                    HelpFormatter.DEFAULT_LEFT_PAD,
+                    HelpFormatter.DEFAULT_DESC_PAD,null);
             printWriter.flush();
             HELP_STRING = new String(byteArrayOutputStream.toByteArray());
             printWriter.close();
