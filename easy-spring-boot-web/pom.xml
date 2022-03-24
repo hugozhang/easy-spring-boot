@@ -13,6 +13,12 @@
     <artifactId>easy-spring-boot-web</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.juma.server</groupId>
             <artifactId>easy-spring-boot-domain</artifactId>
