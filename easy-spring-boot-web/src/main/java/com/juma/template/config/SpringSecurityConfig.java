@@ -32,7 +32,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     //该地址不走 Spring Security 过滤器链
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/login");
+        web.ignoring().antMatchers("/login,/test");
     }
 
     @Override

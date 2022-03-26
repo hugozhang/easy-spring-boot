@@ -2,7 +2,7 @@ package com.juma.template.controller.user;
 
 import com.juma.template.common.valid.OnCreate;
 import com.juma.template.common.valid.OnUpdate;
-import com.juma.template.exception.BizServiceException;
+import com.juma.template.exception.BizException;
 import com.juma.template.user.User;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +47,7 @@ public class UserController {
 
     @GetMapping("/error")
     public User error() {
-        throw new BizServiceException("user.not.found","用户不存在");
+        throw new BizException("user.not.found","用户不存在");
     }
 
 

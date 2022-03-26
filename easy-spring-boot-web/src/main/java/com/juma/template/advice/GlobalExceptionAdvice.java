@@ -2,7 +2,7 @@ package com.juma.template.advice;
 
 import com.juma.template.common.JsonResult;
 import com.juma.template.common.ValidFieldError;
-import com.juma.template.exception.BizServiceException;
+import com.juma.template.exception.BizException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,7 +31,7 @@ public class GlobalExceptionAdvice {
      */
     @ExceptionHandler(value = {BindException.class})
     @ResponseBody
-    public JsonResult validParamterWrap(BindException ex) {
+    public JsonResult validParameterWrap(BindException ex) {
         List<FieldError> errors= ex.getBindingResult().getFieldErrors();
         JsonResult result = buildValidFieldError(errors);
         return result;
@@ -44,7 +44,7 @@ public class GlobalExceptionAdvice {
      */
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseBody
-    public JsonResult validParamterWrap2(MethodArgumentNotValidException ex) {
+    public JsonResult validParameterWrap2(MethodArgumentNotValidException ex) {
         List<FieldError> errors= ex.getBindingResult().getFieldErrors();
         JsonResult result = buildValidFieldError(errors);
         return result;
@@ -57,7 +57,7 @@ public class GlobalExceptionAdvice {
      */
     @ExceptionHandler(value = {ConstraintViolationException.class})
     @ResponseBody
-    public JsonResult validParamterWrap3(ConstraintViolationException ex) {
+    public JsonResult validParameterWrap3(ConstraintViolationException ex) {
         List<ValidFieldError> results = new ArrayList<>();
         Set<ConstraintViolation<?>> constraintViolations = ex.getConstraintViolations();
         for ( ConstraintViolation constraintViolation : constraintViolations ) {
@@ -88,9 +88,9 @@ public class GlobalExceptionAdvice {
         return result;
     }
 
-    @ExceptionHandler(BizServiceException.class)
+    @ExceptionHandler(BizException.class)
     @ResponseBody
-    public JsonResult businessException(BizServiceException ex) {
+    public JsonResult businessException(BizException ex) {
         JsonResult result = new JsonResult();
         result.setCode(500);
         result.setMessage("业务异常");
