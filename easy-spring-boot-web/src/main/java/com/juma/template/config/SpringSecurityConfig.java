@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  * @Date: 2020/12/02 16:03
  * @Description:
  */
-@Configuration
+//@Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 

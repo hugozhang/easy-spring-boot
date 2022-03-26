@@ -16,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="easy-spring-boot" target="1.8" />
       <module name="easy-spring-boot-biz" target="1.8" />
       <module name="easy-spring-boot-common" target="1.8" />
       <module name="easy-spring-boot-domain" target="1.8" />
